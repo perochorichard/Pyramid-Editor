@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pyramid Renderer</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script src="js/three.js"></script>
+    <script src="js/footer.js"></script>
+</head>
+<body>
+<h1>Pyramid Renderer</h1>
+
+<!--Mesh renderer js-->
+<script type="text/javascript">
+    var baseN = 3;
+</script>
+<script src="js/PyramidDisplay.js"></script>
+<div id="display"></div>
+<!--Mesh renderer js-->
+
+<div id="information">
+    <!--thymeleaf ${pyramid} declared in controller modelName-->
+    <form method="post" th:action="validate" th:object="${pyramid}">
+        <p>
+            <label for="sideN">Number of Sides</label><br>
+            <select th:field="${pyramid.baseN}" id="sideN">
+                <option th:each="p: ${bases}" th:value="${p}" th:text="${p}">base sides</option>
+            </select>
+        </p>
+        <p>
+            <label for="inputBaseSideLength">Side Length</label><br>
+            <input th:field="*{baseSide}" id="inputBaseSideLength" type="text"
+                         placeholder="base side length"/>
+            <br><label for="inputHeight">Height</label><br>
+            <input th:field="${pyramid.height}" id="inputHeight" type="text"
+                   placeholder="height"/>
+        </p>
+        <p>
+            <input type="submit" value="Send">
+        </p>
+    </form>
+</div>
+<footer>Sheridan College Institution of Technology and Advanced Learning || Richard Perocho</footer>
+</body>
+</html>

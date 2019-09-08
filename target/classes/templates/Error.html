@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script src="js/three.js"></script>
+    <script src="js/footer.js"></script>
+</head>
+<body>
+<h1>Pyramid Renderer</h1>
+
+<!--Mesh renderer js-->
+<script type="text/javascript">
+    var baseN = 3;
+</script>
+<script src="js/PyramidDisplay.js"></script>
+<div id="display"></div>
+<!--Mesh renderer js-->
+
+<div th:if="${not #lists.isEmpty(errors)}">
+    <p th:each="error : ${errors}" th:text="${error}"></p>
+    <a href="/">Return to Main</a>
+</div>
+<footer>Sheridan College Institution of Technology and Advanced Learning || Richard Perocho</footer>
+</body>
+</html>

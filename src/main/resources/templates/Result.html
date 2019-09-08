@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>Pyramid Renderer</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script src="js/three.js"></script>
+    <script src="js/footer.js"></script>
+</head>
+<body>
+<h1>Pyramid Renderer</h1>
+
+
+<!--this script tag has nothing to do with the MVC flow of
+the web application. it is just to pass the number of sides to
+the Pyramid display mesh renderer. So that it will show
+the appropriate number of sides as the user has selected.-->
+<!--Mesh renderer js-->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var baseN = /*[[${pyramid.baseN}]]*/ '4';
+    /*]]>*/
+</script>
+<script src="js/PyramidDisplay.js"></script>
+<div id="display"></div>
+<!--Mesh renderer js-->
+
+
+<div class="results">
+    <p th:text="'Number of sides: ' + ${pyramid.baseN}"></p>
+    <p th:text="'Base Side Length: ' + ${pyramid.baseSide}"></p>
+    <p th:text="'Height: ' + ${pyramid.height}"></p>
+    <p th:text="'Base Area: ' + ${#numbers.formatDecimal(pyramid.getBaseArea(),0,2)}"></p>
+    <p th:text="'Volume: ' + ${#numbers.formatDecimal(pyramid.getVolume(),0,2)}"></p>
+    <a href="/" class="button">Return</a>
+</div>
+<footer>Sheridan College Institution of Technology and Advanced Learning || Richard Perocho</footer>
+</body>
+</html>
